@@ -158,7 +158,9 @@ func main() {
 	hello.HashTable = make(map[int64]map[int64]string)
 	runtime.GC()
 	fmt.Println("GC")
+	fmt.Println("Null String Hash:", Hash64StrV2(""))
 	time.Sleep(time.Second * 30)
+
 }
 
 func Hash64(bytes []byte) int64 {

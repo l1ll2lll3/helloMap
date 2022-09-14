@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"time"
 )
 
@@ -30,4 +31,11 @@ func main() {
 	for a := 1; a <= 5; a++ {
 		fmt.Println(<-results)
 	}
+
+	for index, env := range os.Environ() {
+		fmt.Println(index, env)
+	}
+
+	vsgitnode := os.Getenv("VSCODE_GIT_ASKPASS_NODE")
+	fmt.Println("vsgitnode:", vsgitnode)
 }

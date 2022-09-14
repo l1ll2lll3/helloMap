@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"reflect"
 	"time"
 )
 
@@ -40,6 +41,8 @@ func main() {
 	// 	}
 	// }()
 
+	qqq := true
+	fmt.Println("sizeof qqq:", reflect.TypeOf(qqq).Size())
 	world := make(map[int64]lll)
 	var hello lll
 	hello.Elapsed = append(hello.Elapsed, 1, 2, 3, 6)
@@ -74,7 +77,7 @@ func main() {
 			case <-fiveSecondsTicker.C:
 				fmt.Println("2 fiveSecondsTicker.C: send HitmapPack,", time.Now().UTC())
 			case <-stop:
-				fmt.Println("stop")
+				fmt.Println("stop:", <-stop)
 				return
 			}
 		}
@@ -90,7 +93,7 @@ func main() {
 			case <-fiveSecondsTicker.C:
 				fmt.Println("1 fiveSecondsTicker.C: send HitmapPack,", time.Now().UTC())
 			case <-stop:
-				fmt.Println("stop")
+				fmt.Println("stop:", <-stop)
 				return
 			}
 		}
@@ -98,7 +101,7 @@ func main() {
 
 	for {
 		time.Sleep(30 * time.Second)
-		stop <- true
+		stop <- false
 		stop <- true
 	}
 }
